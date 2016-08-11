@@ -24,7 +24,7 @@ These parameters can be used to track the traffic sources and campaign that are 
     adb shell
     am broadcast -a com.android.vending.INSTALL_REFERRER -n installreferrer.demo.com.myapplication/.customreciever.InstallReferrerReceiver --es "referrer" "utm_source=test_source&utm_medium=test_medium&utm_term=test_term&utm_content=test_content&utm_campaign=test_campaign"
        
- Reterive the campaign parameters values in your activity:-
+ To reterive the campaign parameters values in your activity:-
     
     UtmSourceInfo utmSourceInfo=ReferralReceiver.retrieveReferralParams1(getApplicationContext()); 
     utmSourceInfo.getUtmSource();
