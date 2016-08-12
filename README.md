@@ -1,9 +1,9 @@
 ##utm-grabber
-Using this library anyone can extract the campaign parameters (e.g. utm source,utm medium,utm term,utm content and utm campaign) value from campaign url.
-These parameters can be used to track the traffic sources and campaign that are bringing users to your app. 
+Using this library anyone can extract the campaign parameters (e.g. utm source,utm medium,utm term,utm content and utm campaign) values from campaign url.
+These parameters can be used to track the traffic sources and campaigns which are bringing users to your app. 
 
 
-##### include in build.gradle:-
+ include in build.gradle:-
     repositories {
     maven {
         url 'https://dl.bintray.com/android-infoedge/maven/'
@@ -12,7 +12,38 @@ These parameters can be used to track the traffic sources and campaign that are 
     dependencies {
         compile 'com.infoedge.campaign:utm-grabber:1.0.0'
     }
+ 
    
+   
+   Create the InstallReferrerReceiver class in your src folder and instantiate the ReferralReceiver in onReceive Method :-
+    
+     public class InstallReferrerReceiver extends BroadcastReceiver {
+         @Override
+         public void onReceive(Context context, Intent intent) {
+             try {
+                 new ReferralReceiver().onReceive(context,intent);
+     
+             }
+             catch (Exception e){
+                 e.printStackTrace();
+             }
+     
+         }
+     }
+ 
+  
+  Declare the InstallReferrerReceiver with action in your AndroidMainfest.xml :-
+    
+      <receiver
+                  android:name=".customreceiver.InstallReferrerReceiver"
+                  android:exported="true">
+                  <intent-filter>
+                      <action android:name="com.android.vending.INSTALL_REFERRER" />
+                  </intent-filter>
+      
+              </receiver>
+    
+ 
  To test your install referrer you can run this command from terminal:-
      
  
@@ -33,12 +64,13 @@ These parameters can be used to track the traffic sources and campaign that are 
     utmSourceInfo.getUtmCampaign();
     utmSourceInfo.getUtmContent()
  
- Clear the referrer file from your application:         
+ To clear the referrer file from your application:         
      
      ReferralReceiver.clearReferralFile(getApplicationContext());     
   
   
-
+ Refer the below link to generate URLs for Google Play Campaign Measurement
+ (https://developers.google.com/analytics/devguides/collection/android/v4/campaigns) 
 
 ##License
 

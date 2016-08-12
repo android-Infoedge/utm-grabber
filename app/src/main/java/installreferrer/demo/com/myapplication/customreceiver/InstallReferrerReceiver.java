@@ -1,4 +1,4 @@
-package installreferrer.demo.com.myapplication.customreciever;
+package installreferrer.demo.com.myapplication.customreceiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

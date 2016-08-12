@@ -17,7 +17,7 @@
         </activity>
 
         <receiver
-            android:name=".customreciever.InstallReferrerReceiver"
+            android:name=".customreceiver.InstallReferrerReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
